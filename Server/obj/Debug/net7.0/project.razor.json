@@ -5283,117 +5283,6 @@
         }
       },
       {
-        "HashCode": -555577593,
-        "Kind": "Components.Component",
-        "Name": "Parcial2_Robert.Client.Pages.Index",
-        "AssemblyName": "Parcial2-Robert.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Index"
-          }
-        ],
-        "Metadata": {
-          "Common.TypeName": "Parcial2_Robert.Client.Pages.Index",
-          "Common.TypeNameIdentifier": "Index",
-          "Common.TypeNamespace": "Parcial2_Robert.Client.Pages",
-          "Runtime.Name": "Components.IComponent"
-        }
-      },
-      {
-        "HashCode": 685113467,
-        "Kind": "Components.Component",
-        "Name": "Parcial2_Robert.Client.Pages.Index",
-        "AssemblyName": "Parcial2-Robert.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Parcial2_Robert.Client.Pages.Index"
-          }
-        ],
-        "Metadata": {
-          "Common.TypeName": "Parcial2_Robert.Client.Pages.Index",
-          "Common.TypeNameIdentifier": "Index",
-          "Common.TypeNamespace": "Parcial2_Robert.Client.Pages",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch",
-          "Runtime.Name": "Components.IComponent"
-        }
-      },
-      {
-        "HashCode": 1356590412,
-        "Kind": "Components.Component",
-        "Name": "Parcial2_Robert.Client.Pages.FetchData",
-        "AssemblyName": "Parcial2-Robert.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "FetchData"
-          }
-        ],
-        "Metadata": {
-          "Common.TypeName": "Parcial2_Robert.Client.Pages.FetchData",
-          "Common.TypeNameIdentifier": "FetchData",
-          "Common.TypeNamespace": "Parcial2_Robert.Client.Pages",
-          "Runtime.Name": "Components.IComponent"
-        }
-      },
-      {
-        "HashCode": -1261298319,
-        "Kind": "Components.Component",
-        "Name": "Parcial2_Robert.Client.Pages.FetchData",
-        "AssemblyName": "Parcial2-Robert.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Parcial2_Robert.Client.Pages.FetchData"
-          }
-        ],
-        "Metadata": {
-          "Common.TypeName": "Parcial2_Robert.Client.Pages.FetchData",
-          "Common.TypeNameIdentifier": "FetchData",
-          "Common.TypeNamespace": "Parcial2_Robert.Client.Pages",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch",
-          "Runtime.Name": "Components.IComponent"
-        }
-      },
-      {
-        "HashCode": 307864809,
-        "Kind": "Components.Component",
-        "Name": "Parcial2_Robert.Client.Pages.Counter",
-        "AssemblyName": "Parcial2-Robert.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Counter"
-          }
-        ],
-        "Metadata": {
-          "Common.TypeName": "Parcial2_Robert.Client.Pages.Counter",
-          "Common.TypeNameIdentifier": "Counter",
-          "Common.TypeNamespace": "Parcial2_Robert.Client.Pages",
-          "Runtime.Name": "Components.IComponent"
-        }
-      },
-      {
-        "HashCode": 8030459,
-        "Kind": "Components.Component",
-        "Name": "Parcial2_Robert.Client.Pages.Counter",
-        "AssemblyName": "Parcial2-Robert.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Parcial2_Robert.Client.Pages.Counter"
-          }
-        ],
-        "Metadata": {
-          "Common.TypeName": "Parcial2_Robert.Client.Pages.Counter",
-          "Common.TypeNameIdentifier": "Counter",
-          "Common.TypeNamespace": "Parcial2_Robert.Client.Pages",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch",
-          "Runtime.Name": "Components.IComponent"
-        }
-      },
-      {
         "HashCode": -1394019922,
         "Kind": "Components.Component",
         "Name": "Parcial2_Robert.Client.App",
@@ -5426,6 +5315,43 @@
           "Common.TypeName": "Parcial2_Robert.Client.App",
           "Common.TypeNameIdentifier": "App",
           "Common.TypeNamespace": "Parcial2_Robert.Client",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch",
+          "Runtime.Name": "Components.IComponent"
+        }
+      },
+      {
+        "HashCode": -555577593,
+        "Kind": "Components.Component",
+        "Name": "Parcial2_Robert.Client.Pages.Index",
+        "AssemblyName": "Parcial2-Robert.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Index"
+          }
+        ],
+        "Metadata": {
+          "Common.TypeName": "Parcial2_Robert.Client.Pages.Index",
+          "Common.TypeNameIdentifier": "Index",
+          "Common.TypeNamespace": "Parcial2_Robert.Client.Pages",
+          "Runtime.Name": "Components.IComponent"
+        }
+      },
+      {
+        "HashCode": 685113467,
+        "Kind": "Components.Component",
+        "Name": "Parcial2_Robert.Client.Pages.Index",
+        "AssemblyName": "Parcial2-Robert.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Parcial2_Robert.Client.Pages.Index"
+          }
+        ],
+        "Metadata": {
+          "Common.TypeName": "Parcial2_Robert.Client.Pages.Index",
+          "Common.TypeNameIdentifier": "Index",
+          "Common.TypeNamespace": "Parcial2_Robert.Client.Pages",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch",
           "Runtime.Name": "Components.IComponent"
         }
