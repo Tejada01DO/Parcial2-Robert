@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "wqQzH/U46nPpNxXQlNoC4WHNA6QNef7bUe5vaMYu84z7JmPMbKS/gym3rbNowI9jUAsBfpjBAvQE5fzGKhCnYA==",
+  "dgSpecHash": "s1xFKVOYigg5hXyMTnv5v6d5seSkd7U0Ko1iWGcLb6BaDNa4BfCdQik+54AzdUYrJDXR7q/N3AvC+HBTsINTlw==",
   "success": true,
   "projectFilePath": "C:\\Parcial2-Robert\\Parcial2-Robert\\Server\\Parcial2-Robert.Server.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Robert Tejada\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\Robert Tejada\\.nuget\\packages\\libsassbuilder\\2.0.1\\libsassbuilder.2.0.1.nupkg.sha512",
     "C:\\Users\\Robert Tejada\\.nuget\\packages\\microsoft.aspnetcore.authorization\\7.0.5\\microsoft.aspnetcore.authorization.7.0.5.nupkg.sha512",
     "C:\\Users\\Robert Tejada\\.nuget\\packages\\microsoft.aspnetcore.components\\7.0.5\\microsoft.aspnetcore.components.7.0.5.nupkg.sha512",
     "C:\\Users\\Robert Tejada\\.nuget\\packages\\microsoft.aspnetcore.components.analyzers\\7.0.5\\microsoft.aspnetcore.components.analyzers.7.0.5.nupkg.sha512",
@@ -42,12 +43,14 @@
     "C:\\Users\\Robert Tejada\\.nuget\\packages\\microsoft.jsinterop\\7.0.5\\microsoft.jsinterop.7.0.5.nupkg.sha512",
     "C:\\Users\\Robert Tejada\\.nuget\\packages\\microsoft.jsinterop.webassembly\\7.0.5\\microsoft.jsinterop.webassembly.7.0.5.nupkg.sha512",
     "C:\\Users\\Robert Tejada\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
+    "C:\\Users\\Robert Tejada\\.nuget\\packages\\radzen.blazor\\4.13.5\\radzen.blazor.4.13.5.nupkg.sha512",
     "C:\\Users\\Robert Tejada\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.1.4\\sqlitepclraw.bundle_e_sqlite3.2.1.4.nupkg.sha512",
     "C:\\Users\\Robert Tejada\\.nuget\\packages\\sqlitepclraw.core\\2.1.4\\sqlitepclraw.core.2.1.4.nupkg.sha512",
     "C:\\Users\\Robert Tejada\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.4\\sqlitepclraw.lib.e_sqlite3.2.1.4.nupkg.sha512",
     "C:\\Users\\Robert Tejada\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.1.4\\sqlitepclraw.provider.e_sqlite3.2.1.4.nupkg.sha512",
     "C:\\Users\\Robert Tejada\\.nuget\\packages\\system.codedom\\4.4.0\\system.codedom.4.4.0.nupkg.sha512",
     "C:\\Users\\Robert Tejada\\.nuget\\packages\\system.io.pipelines\\7.0.0\\system.io.pipelines.7.0.0.nupkg.sha512",
+    "C:\\Users\\Robert Tejada\\.nuget\\packages\\system.linq.dynamic.core\\1.3.0\\system.linq.dynamic.core.1.3.0.nupkg.sha512",
     "C:\\Users\\Robert Tejada\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
     "C:\\Users\\Robert Tejada\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
     "C:\\Users\\Robert Tejada\\.nuget\\packages\\system.text.json\\7.0.0\\system.text.json.7.0.0.nupkg.sha512"
