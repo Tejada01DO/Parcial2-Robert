@@ -67,5 +67,24 @@ namespace Parcial2_Robert.Server.Controllers
             return Ok(productos);
         }
 
+        [HttpDelete("{ProductoId}")]
+        public async Task<IActionResult> Eliminar(int ProductoId)
+        {
+            if(_context.Productos == null)
+            {
+                return NotFound();
+            }
+
+            var producto = await _context.Productos.FindAsync(ProductoId);
+
+            if(producto == null)
+            {
+                return NotFound();
+            }
+
+            _context.Productos.Remove(producto);
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
     }
 }
