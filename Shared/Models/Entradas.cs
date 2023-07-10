@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 public class Entradas
 {
     [Key]
-
     public int EntradaId { get; set; }
     public DateTime Fecha { get; set; } = DateTime.Now;
     public string? Concepto { get; set; }
