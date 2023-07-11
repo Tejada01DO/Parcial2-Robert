@@ -3,6 +3,15 @@
 @inject HttpClient httpClient
 @inject NotificationService notify
 
+<EditForm Model="entradas" OnValidSubmit="Guardar">
+    <DataAnnotationsValidator />
+    <div class="card">
+        <div class="card-header">
+            <h1>Registro de Productos</h1>
+        </div>
+    </div>
+</EditForm>>
+
 @code
 {
     [Parameter]
@@ -54,6 +63,55 @@
         else
         {
             return true;
+        }
+    }
+
+    public bool ValidarDetalle()
+    {
+        if(entradasDetalle.ProductoId < 0)
+        {
+            return false;
+        }
+        if(entradasDetalle.CantidadUtilizada < 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+    public async Task Guardar()
+    {
+        using var response = await httpClient.PostAsJsonAsync("api/Entrada", entradas);
+
+        if(!response.IsSuccessStatusCode)
+        {
+            return;
+        }
+        
+        var entradaDevuelta = await response.Content.ReadFromJsonAsync<Entradas>();
+        
+        if(entradaDevuelta is not null)
+        {
+            this.entradas = entradaDevuelta;
+            StateHasChanged();
+            Nuevo();
+        }
+    }
+
+    public async Task Eliminar()
+    {
+        using var response = await httpClient.DeleteAsync($"api/Entrada/{entradas.EntradaId}");
+        
+        if(!response.IsSuccessStatusCode)
+        {
+            return;
+        }
+        else
+        {
+            Nuevo();
         }
     }
 }
