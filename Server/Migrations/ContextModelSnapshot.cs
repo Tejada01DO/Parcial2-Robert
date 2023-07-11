@@ -22,7 +22,7 @@ namespace Parcial2Robert.Server.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("CaantidadProducida")
+                    b.Property<int>("CantidadProducida")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Concepto")

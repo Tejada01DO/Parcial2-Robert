@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Parcial2Robert.Server.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230711002944_Inicial")]
+    [Migration("20230711004821_Inicial")]
     partial class Inicial
     {
         /// <inheritdoc />
@@ -25,7 +25,7 @@ namespace Parcial2Robert.Server.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("CaantidadProducida")
+                    b.Property<int>("CantidadProducida")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Concepto")

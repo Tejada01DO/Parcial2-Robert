@@ -23,7 +23,7 @@ namespace Parcial2Robert.Server.Migrations
                     Concepto = table.Column<string>(type: "TEXT", nullable: true),
                     PesoTotal = table.Column<int>(type: "INTEGER", nullable: false),
                     ProductoId = table.Column<int>(type: "INTEGER", nullable: false),
-                    CaantidadProducida = table.Column<int>(type: "INTEGER", nullable: false)
+                    CantidadProducida = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
