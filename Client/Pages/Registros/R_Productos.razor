@@ -43,12 +43,74 @@
                                     <option value="@item.ProductoId">@item.Descripcion</option>
                                 }
                         </div>
+
+                        <div class="col-md-6">
+                            <label>Cantidad</label>
+                            <InputNumber @bind-Value="entradasDetalle.CantidadUtilizada" class="form-control"></InputNumber>
+                            <button type="button" class="btn btn-dark" @onclick="AgregarDetalle">Agregar<i class="oi oi-plus" /></button>
+                        </div>
+                    </div>
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Producto ID</th>
+                                <th>Descripcion</th>
+                                <th>Cantidad</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in this.entradas.entradasDetalle)
+                            {
+                                <tr>
+                                    <td>@item.ProductoId</td>
+                                    <td>@entradas.Buscar(item.ProductoId)?.Descripcion</td>
+                                    <td>@item.CantidadUtilizada</td>
+                                    <td><button class="btn btn-danger" @onclick=@(() => EliminarDetalle(item.DetalleId))><i class="oi oi-trash" /></button></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                    <hr>
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-md-6">
+                            <label>Total:</label>
+                            <input @bind-value="Total" class="form-control"/>
+                        </div>
+                    </div>
+                </fieldset>
+                <hr>
+                <fieldset>
+                    <legend>Producido</legend>
+                    <div class="row">
+                        <div class="col-3">
+                            <select @bind="entradas.ProductoId" class="form-control">
+                                @foreach (var item in L_Productos)
+                                {
+                                    <option value="@item.ProductoId">@item.Descripcion</option>
+                                }
+                            </select>
+                        </div>
+
+                        <div class="col-2">
+                            <input @bind-value="entradas.CantidadProducida" class="form-control" placeholder="Cantidad Producida"/>
+                        </div>
                     </div>
                 </fieldset>
             </div>
+
+            <div class="card-footer d-flex justify-content-center">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-outline-primary" @onclick="Nuevo">Nuevo <i class="oi oi-file"/></button>
+                    <button type="submit" class="btn btn-outline-success" @onclick="Guardar">Guardar <i class="oi oi-document"/></button>
+                    <button type="button" class="btn btn-outline-danger" @onclick="Eliminar">Eliminar <i class="oi oi-trash"/></button>
+                </div>
+            </div>
         </div>
     </fieldset>
-</EditForm>>
+</EditForm>
 
 @code
 {
@@ -210,6 +272,4 @@
             entradas.entradasDetalle.Remove(detalle);
         }
     }
-
-
 }
