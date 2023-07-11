@@ -9,6 +9,6 @@ public class Entradas
     public string? Concepto { get; set; }
     public int PesoTotal { get; set; }
     public int ProductoId { get; set; }
-    public int CaantidadProducida { get; set; }
+    public int CantidadProducida { get; set; }
     public List<EntradasDetalle> entradasDetalle { get; set; } = new List<EntradasDetalle>();
 }

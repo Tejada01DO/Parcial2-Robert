@@ -1,0 +1,59 @@
+@page "/RegistroProductos"
+@page "/RegistroProductos/{ProductoId:int}"
+@inject HttpClient httpClient
+@inject NotificationService notify
+
+@code
+{
+    [Parameter]
+    public int ProductoId { get; set; }
+    public Entradas entradas { get; set; } = new Entradas();
+    public EntradasDetalle entradasDetalle { get; set; } = new EntradasDetalle();
+    public int Total { get; set; } = 0;
+    public int Cantidad { get; set; }
+
+    public void Nuevo()
+    {
+        this.entradas = new Entradas();
+    }
+
+    public async Task Buscar()
+    {
+        var entradaEncontrada = await httpClient.GetFromJsonAsync<Entradas>($"api/Entradas/{entradas.EntradaId}");
+
+        if(entradaEncontrada != null)
+        {
+            this.entradas = entradaEncontrada;
+            StateHasChanged();
+            notify.ShowNotification(titulo: "Encontrado", mensaje: "La entrada se ha encontrado con exito", NotificationSeverity.Info);
+        }
+        else
+        {
+            notify.ShowNotification(titulo: "No encontrado", mensaje: "Esa entrada no existe", NotificationSeverity.Error);
+        }
+    }
+
+    public bool Validar()
+    {
+        if(string.IsNullOrEmpty(entradas.Concepto))
+        {
+            return false;
+        }
+        if(entradas.PesoTotal < 0)
+        {
+            return false;
+        }
+        if(entradas.ProductoId < 0)
+        {
+            return false;
+        }
+        if(entradas.CantidadProducida < 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+}
