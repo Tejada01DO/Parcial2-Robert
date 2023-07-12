@@ -51,6 +51,9 @@ namespace Parcial2Robert.Server.Migrations
                     b.Property<int>("CantidadUtilizada")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Descripcion")
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("EntradaId")
                         .HasColumnType("INTEGER");
 

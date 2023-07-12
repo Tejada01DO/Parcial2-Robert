@@ -9,13 +9,13 @@
         <div class="card">
 
             <div class="card-header">
-                <h1>Registro de Productos</h1>
+                <h1>Entradas de productos empacados</h1>
             </div>
 
             <div class="card-body">
                 <div class="col-md-6">
+                    <label>ID</label>
                     <div class="input-group">
-                        <label>ID</label>
                         <InputNumber @bind-Value="entradas.EntradaId" class="form-control"></InputNumber>
                         <button type="button" class="btn btn-outline-primary oi oi-magnifying-glass" @onclick="Buscar"></button>
                     </div>
@@ -37,17 +37,23 @@
                     <div class="row">
                         <div class="col-md-6">
                             <label>Producto: </label>
-                            <InputNumber @bind-Value="entradasDetalle.ProductoId" class="form-control"></InputNumber>
+                            <InputSelect @bind-Value="entradasDetalle.ProductoId" class="form-control">
+                                <option value="@entradas.ProductoId" hidden="hidden">Seleccione un producto</option>
                                 @foreach (var item in L_Productos)
                                 {
                                     <option value="@item.ProductoId">@item.Descripcion</option>
                                 }
+                            </InputSelect>
+                            <ValidationMessage For="@(() => entradasDetalle.ProductoId)" />
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-md-5">
                             <label>Cantidad</label>
-                            <InputNumber @bind-Value="entradasDetalle.CantidadUtilizada" class="form-control"></InputNumber>
-                            <button type="button" class="btn btn-dark" @onclick="AgregarDetalle">Agregar<i class="oi oi-plus" /></button>
+                            <div class="input-group">
+                                <InputNumber @bind-Value="entradasDetalle.CantidadUtilizada" class="form-control"></InputNumber>
+                                <button type="button" class="btn btn-dark" @onclick="AgregarDetalle">Agregar <i class="oi oi-plus" /></button>
+                                <ValidationMessage For="@(() => entradasDetalle.CantidadUtilizada)" />
+                            </div>
                         </div>
                     </div>
 
@@ -63,21 +69,21 @@
                         <tbody>
                             @foreach (var item in this.entradas.entradasDetalle)
                             {
+                                
                                 <tr>
                                     <td>@item.ProductoId</td>
-                                    <td>@entradas.Buscar(item.ProductoId)?.Descripcion</td>
+                                    <td>@ObtenerDescripcion(item.ProductoId)</td>
                                     <td>@item.CantidadUtilizada</td>
-                                    <td><button class="btn btn-danger" @onclick=@(() => EliminarDetalle(item.DetalleId))><i class="oi oi-trash" /></button></td>
+                                    <td><button type="button" class="btn btn-danger" @onclick=@(() => EliminarDetalle(item))><i class="oi oi-trash" /></button></td>
                                 </tr>
                             }
                         </tbody>
                     </table>
 
-                    <hr>
                     <div class="row d-flex justify-content-center">
                         <div class="col-md-6">
                             <label>Total:</label>
-                            <input @bind-value="Total" class="form-control"/>
+                            <input disabled @bind-value="Total" class="form-control"/>
                         </div>
                     </div>
                 </fieldset>
@@ -104,7 +110,7 @@
             <div class="card-footer d-flex justify-content-center">
                 <div class="btn-group">
                     <button type="button" class="btn btn-outline-primary" @onclick="Nuevo">Nuevo <i class="oi oi-file"/></button>
-                    <button type="submit" class="btn btn-outline-success" @onclick="Guardar">Guardar <i class="oi oi-document"/></button>
+                    <button type="submit" class="btn btn-outline-success">Guardar <i class="oi oi-document"/></button>
                     <button type="button" class="btn btn-outline-danger" @onclick="Eliminar">Eliminar <i class="oi oi-trash"/></button>
                 </div>
             </div>
@@ -117,6 +123,7 @@
     [Parameter]
     public int ProductoId { get; set; }
     public Entradas entradas { get; set; } = new Entradas();
+    public Productos productos { get; set; } = new Productos();
     public EntradasDetalle entradasDetalle { get; set; } = new EntradasDetalle();
     public int Total { get; set; } = 0;
     public int Cantidad { get; set; }
@@ -124,42 +131,62 @@
     
     protected override async Task OnInitializedAsync()
     {
-        var Productos =  await httpClient.GetFromJsonAsync<List<Productos>>($"api/Productos");
+        var productos =  await httpClient.GetFromJsonAsync<List<Productos>>($"api/Productos");
         
-        if(Productos is not null)
+        if(productos is not null)
         {
-            L_Productos = Productos;
+            L_Productos = productos;
         }
     }
 
     public void Nuevo()
     {
         this.entradas = new Entradas();
+        Total = 0;
+        notify.ShowNotification(titulo: "Nuevo", mensaje: "Se ha limpiado correctamente", NotificationSeverity.Info);
     }
 
-    public async Task Buscar()
+    public async Task<bool> Buscar()
     {
-        var entradaEncontrada = await httpClient.GetFromJsonAsync<Entradas>($"api/Entradas/{entradas.EntradaId}");
+        try
+        {
+            var entradaEncontrada = await httpClient.GetFromJsonAsync<Entradas>($"api/Entradas/{entradas.EntradaId}");
 
-        if(entradaEncontrada != null)
-        {
-            this.entradas = entradaEncontrada;
-            StateHasChanged();
-            notify.ShowNotification(titulo: "Encontrado", mensaje: "La entrada se ha encontrado con exito", NotificationSeverity.Info);
+            if(entradaEncontrada != null)
+            {
+                this.entradas = entradaEncontrada;
+                StateHasChanged();
+                notify.ShowNotification(titulo: "Encontrado", mensaje: "La entrada se ha encontrado con exito", NotificationSeverity.Info);
+                return true;
+            }
+            else
+            {
+                notify.ShowNotification(titulo: "No encontrado", mensaje: "Esa entrada no existe", NotificationSeverity.Warning);
+                return false;
+            }
         }
-        else
+        catch
         {
-            notify.ShowNotification(titulo: "No encontrado", mensaje: "Esa entrada no existe", NotificationSeverity.Error);
+            notify.ShowNotification(titulo: "Error", mensaje: "Ha ocurrido un error, intentelo de nuevo", NotificationSeverity.Error);
+            return false;
         }
+    }
+
+    private async Task<Productos> BuscarEntradas(int ProductoId)
+    {
+        var producto = await httpClient.GetFromJsonAsync<Productos>($"api/Productos/{ProductoId}");
+        
+        if(producto == null)
+        {
+            return new Productos();
+        }
+
+        return producto;
     }
 
     public bool Validar()
     {
         if(string.IsNullOrEmpty(entradas.Concepto))
-        {
-            return false;
-        }
-        if(entradas.PesoTotal < 0)
         {
             return false;
         }
@@ -195,81 +222,90 @@
 
     public async Task Guardar()
     {
-        using var response = await httpClient.PostAsJsonAsync("api/Entrada", entradas);
+        using var response = await httpClient.PostAsJsonAsync("api/Entradas", entradas);
 
-        if(Validar())
+        if(response.IsSuccessStatusCode)
         {
-           if(!response.IsSuccessStatusCode)
-            {
-                return;
-            }
-        
             var entradaDevuelta = await response.Content.ReadFromJsonAsync<Entradas>();
-        
+
             if(entradaDevuelta is not null)
             {
                 this.entradas = entradaDevuelta;
-                StateHasChanged();
                 Nuevo();
-            } 
+                notify.ShowNotification(titulo: "Guardado", mensaje: "El producto se ha guardado con exito", NotificationSeverity.Success);
+            }
+            else
+            {
+                notify.ShowNotification(titulo: "No Guardado", mensaje: "No hay nada para guardar", NotificationSeverity.Error);
+            }
         }
+        else
+        {
+            notify.ShowNotification(titulo: "Error", mensaje: "Ha ocurrido un error, intentelo de nuevo", NotificationSeverity.Error);
+        }       
     }
 
     public async Task Eliminar()
     {
-        using var response = await httpClient.DeleteAsync($"api/Entrada/{entradas.EntradaId}");
+        using var response = await httpClient.DeleteAsync($"api/Entradas/{entradas.EntradaId}");
 
-        if(Validar())
+        if(!response.IsSuccessStatusCode)
         {
-           if(!response.IsSuccessStatusCode)
-            {
-                return;
-            }
-            else
-            {
-                Nuevo();
-            } 
-        }
-    }
-
-    private async Task<Entradas> BuscarEntradas(int EntradaId)
-    {
-        Entradas entradas = new Entradas();
-        var entradaEncontrada = await httpClient.GetFromJsonAsync<Entradas>($"api/Entradas/{entradas.EntradaId}");
-
-        if (entradaEncontrada != null)
-        {
-            return entradas = entradaEncontrada;
+            return;
         }
         else
         {
-            return new Entradas();
+            Nuevo();
+            notify.ShowNotification(titulo: "Eliminado", mensaje: "El producto se ha eliminado correctamente", NotificationSeverity.Error);
         }
+        
+        notify.ShowNotification(titulo: "No eliminado", mensaje: "No hay nada por eliminar", NotificationSeverity.Warning);
     }
 
-    public void AgregarDetalle()
+    public async Task AgregarDetalle()
     {
         if(ValidarDetalle())
         {
+            if(entradasDetalle.CantidadUtilizada <= 0)
+            {
+                notify.ShowNotification(titulo: "Error", mensaje: "La cantidad a utilizar debe ser mayor que cero", NotificationSeverity.Warning);
+                return;
+            }
+
+            var producto = await BuscarEntradas(entradasDetalle.ProductoId);
+
             if(entradas != null)
             {
-                entradasDetalle.EntradaId = entradas.EntradaId;
+                int Suma = 0;
 
+                if(entradasDetalle.CantidadUtilizada > producto.Existencia)
+                {
+                    notify.ShowNotification(titulo: "Error", mensaje: "La cantidad a utilizar es mayor que la existencia del producto", NotificationSeverity.Warning);
+                    return;
+                }
+
+                entradasDetalle.EntradaId = entradas.EntradaId;
                 entradas.entradasDetalle.Add(entradasDetalle);
                 entradasDetalle = new EntradasDetalle();
+
+                foreach (var item in entradas.entradasDetalle)
+                {
+                    Suma += item.CantidadUtilizada;
+                    Total = Suma;
+                }
             }
         }
     }
 
     public void EliminarDetalle(EntradasDetalle detalle)
     {
-        var detalleEncontrado = entradas.entradasDetalle.Find(e => e.DetalleId == detalle.DetalleId);
+        this.entradas.entradasDetalle.Remove(detalle);
 
-        if(detalleEncontrado != null)
-        {
-            var entrada = BuscarEntradas(detalleEncontrado.ProductoId);
-            detalle = detalleEncontrado;
-            entradas.entradasDetalle.Remove(detalle);
-        }
+        Total = this.entradas.entradasDetalle.Sum(t => t.CantidadUtilizada);
+    }
+
+    public string ObtenerDescripcion(int Id)
+    {
+        return L_Productos.Where(p => p.ProductoId == Id).FirstOrDefault().Descripcion;
     }
 }

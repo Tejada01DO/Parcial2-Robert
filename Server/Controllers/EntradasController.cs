@@ -60,9 +60,13 @@ namespace Parcial2_Robert.Server.Controllers
                 foreach(var productoConsumido in entradas.entradasDetalle)
                 {
                     producto = _context.Productos.Find(productoConsumido.ProductoId);
-                    producto.Existencia -= productoConsumido.CantidadUtilizada;
-                    _context.Entry(producto).State = EntityState.Modified;
-                    _context.Entry(productoConsumido).State = EntityState.Added;
+
+                    if(producto != null)
+                    {
+                        producto.Existencia -= productoConsumido.CantidadUtilizada;
+                        _context.Entry(producto).State = EntityState.Modified;
+                        _context.Entry(productoConsumido).State = EntityState.Added;
+                    }
                 }
                 _context.Entradas.Add(entradas);
             }
@@ -73,29 +77,55 @@ namespace Parcial2_Robert.Server.Controllers
 
                 Productos? producto = new Productos();
 
-                foreach(var productoConsumido in entradaAnterior.entradasDetalle)
+                if(entradaAnterior != null && entradaAnterior.entradasDetalle != null)
                 {
-                    producto = _context.Productos.Find(productoConsumido.ProductoId);
-                    producto.Existencia +=  productoConsumido.CantidadUtilizada;
-                    _context.Entry(producto).State = EntityState.Modified;
+                    foreach(var productoConsumido in entradaAnterior.entradasDetalle)
+                    {
+                        if(productoConsumido != null)
+                        {
+                            producto = _context.Productos.Find(productoConsumido.ProductoId);
+
+                            if(producto != null)
+                            {
+                                producto.Existencia +=  productoConsumido.CantidadUtilizada;
+                                _context.Entry(producto).State = EntityState.Modified;
+                            }   
+                        }
+                    }
                 }
 
-                producto = _context.Productos.Find(entradaAnterior.ProductoId);
-                producto.Existencia -= entradaAnterior.CantidadProducida;
-                _context.Entry(producto).State = EntityState.Modified;
+                if(entradaAnterior != null)
+                {
+                    producto = _context.Productos.Find(entradaAnterior.ProductoId);
+
+                    if(producto != null)
+                    {
+                        producto.Existencia -= entradaAnterior.CantidadProducida;
+                        _context.Entry(producto).State = EntityState.Modified;
+                    }
+                }
+
                 _context.Database.ExecuteSqlRaw($"Delete from entradasDetalle where EntradaId = {entradas.EntradaId}");
 
                 foreach(var productoConsumido in entradas.entradasDetalle)
                 {
                     producto = _context.Productos.Find(productoConsumido.ProductoId);
-                    producto.Existencia -= productoConsumido.CantidadUtilizada;
-                    _context.Entry(producto).State = EntityState.Modified;
-                    _context.Entry(productoConsumido).State = EntityState.Added;
+
+                    if(producto != null)
+                    {
+                        producto.Existencia -= productoConsumido.CantidadUtilizada;
+                        _context.Entry(producto).State = EntityState.Modified;
+                        _context.Entry(productoConsumido).State = EntityState.Added;
+                    }
                 }
 
                 producto = _context.Productos.Find(entradas.ProductoId);
-                producto.Existencia += entradas.CantidadProducida;
-                _context.Entry(producto).State = EntityState.Modified;
+
+                if(producto != null)
+                {
+                    producto.Existencia += entradas.CantidadProducida;
+                    _context.Entry(producto).State = EntityState.Modified;
+                }
                 _context.Entradas.Update(entradas);
             }
 
@@ -124,20 +154,26 @@ namespace Parcial2_Robert.Server.Controllers
             foreach(var productoConsumido in entrada.entradasDetalle)
             {
                 producto = _context.Productos.Find(productoConsumido.ProductoId);
-                producto.Existencia -= productoConsumido.CantidadUtilizada;
-                _context.Entry(producto).State = EntityState.Modified;
+
+                if(producto != null)
+                {
+                    producto.Existencia -= productoConsumido.CantidadUtilizada;
+                    _context.Entry(producto).State = EntityState.Modified;
+                }
             }
 
             producto = _context.Productos.Find(entrada.ProductoId);
-            producto.Existencia -= entrada.CantidadProducida;
-            _context.Entry(producto).State = EntityState.Modified;
+
+            if(producto != null)
+            {
+                producto.Existencia -= entrada.CantidadProducida;
+                _context.Entry(producto).State = EntityState.Modified; 
+            }
             _context.Database.ExecuteSqlRaw($"Delete from entradasDetalle where EntradaId = {entrada.EntradaId}");
 
             _context.Entradas.Remove(entrada);
             await _context.SaveChangesAsync();
             return NoContent();
-        }
-
-        
+        } 
     }
 }
