@@ -20,8 +20,7 @@ namespace Parcial2Robert.Server.Migrations
                     EntradaId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Fecha = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Concepto = table.Column<string>(type: "TEXT", nullable: true),
-                    PesoTotal = table.Column<int>(type: "INTEGER", nullable: false),
+                    Concepto = table.Column<string>(type: "TEXT", nullable: false),
                     ProductoId = table.Column<int>(type: "INTEGER", nullable: false),
                     CantidadProducida = table.Column<int>(type: "INTEGER", nullable: false)
                 },
@@ -36,7 +35,7 @@ namespace Parcial2Robert.Server.Migrations
                 {
                     ProductoId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Descripcion = table.Column<string>(type: "TEXT", nullable: true),
+                    Descripcion = table.Column<string>(type: "TEXT", nullable: false),
                     PrecioCompra = table.Column<double>(type: "REAL", nullable: false),
                     PrecioVenta = table.Column<double>(type: "REAL", nullable: false),
                     Existencia = table.Column<int>(type: "INTEGER", nullable: false)
@@ -54,18 +53,17 @@ namespace Parcial2Robert.Server.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     EntradaId = table.Column<int>(type: "INTEGER", nullable: false),
                     ProductoId = table.Column<int>(type: "INTEGER", nullable: false),
-                    Descripcion = table.Column<string>(type: "TEXT", nullable: true),
-                    CantidadUtilizada = table.Column<int>(type: "INTEGER", nullable: false),
-                    EntradasEntradaId = table.Column<int>(type: "INTEGER", nullable: true)
+                    CantidadUtilizada = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_EntradasDetalle", x => x.DetalleId);
                     table.ForeignKey(
-                        name: "FK_EntradasDetalle_Entradas_EntradasEntradaId",
-                        column: x => x.EntradasEntradaId,
+                        name: "FK_EntradasDetalle_Entradas_EntradaId",
+                        column: x => x.EntradaId,
                         principalTable: "Entradas",
-                        principalColumn: "EntradaId");
+                        principalColumn: "EntradaId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -83,9 +81,9 @@ namespace Parcial2Robert.Server.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_EntradasDetalle_EntradasEntradaId",
+                name: "IX_EntradasDetalle_EntradaId",
                 table: "EntradasDetalle",
-                column: "EntradasEntradaId");
+                column: "EntradaId");
         }
 
         /// <inheritdoc />

@@ -131,11 +131,19 @@
     
     protected override async Task OnInitializedAsync()
     {
-        var productos =  await httpClient.GetFromJsonAsync<List<Productos>>($"api/Productos");
-        
-        if(productos is not null)
+        try
         {
-            L_Productos = productos;
+            var productos = await httpClient.GetFromJsonAsync<List<Productos>>("api/Productos");
+
+            if (productos is not null)
+            {
+                L_Productos = productos;
+            }
+        }
+        catch (Exception ex)
+        {
+            // Manejar la excepción o imprimir detalles del error
+            Console.WriteLine(ex.Message);
         }
     }
 
@@ -151,7 +159,7 @@
         try
         {
             var entradaEncontrada = await httpClient.GetFromJsonAsync<Entradas>($"api/Entradas/{entradas.EntradaId}");
-
+            
             if(entradaEncontrada != null)
             {
                 this.entradas = entradaEncontrada;

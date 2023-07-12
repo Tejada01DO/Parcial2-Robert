@@ -48,9 +48,37 @@ namespace Parcial2_Robert.Server.Controllers
             {
                 return NotFound();
             }
+
+            foreach(var item in entrada.entradasDetalle)
+            {
+                Console.WriteLine($"{item.DetalleId}, {item.EntradaId}, {item.ProductoId}, {item.CantidadUtilizada}");
+            }
+
             return entrada;
         }
 
+        /*[HttpPost]
+        public async Task<ActionResult<Entradas>> PostEntradas(Entradas entradas)
+        {
+            Productos? producto = new Productos();
+            
+            foreach(var productoConsumido in entradas.entradasDetalle)
+            {
+                producto = _context.Productos.Find(productoConsumido.ProductoId);
+
+                if(producto != null)
+                {
+                    producto.Existencia -= productoConsumido.CantidadUtilizada;
+                    _context.Productos.Update(producto);
+                }
+            }
+            
+            _context.Entradas.Add(entradas);
+            
+            await _context.SaveChangesAsync();
+            _context.Entry(entradas).State = EntityState.Detached;
+            return Ok(entradas);
+        }*/
         [HttpPost]
         public async Task<ActionResult<Entradas>> PostEntradas(Entradas entradas)
         {
@@ -64,13 +92,13 @@ namespace Parcial2_Robert.Server.Controllers
                     if(producto != null)
                     {
                         producto.Existencia -= productoConsumido.CantidadUtilizada;
-                        _context.Entry(producto).State = EntityState.Modified;
-                        _context.Entry(productoConsumido).State = EntityState.Added;
+                        _context.Productos.Update(producto);
+                        _context.Entry(producto).State = EntityState.Detached;
                     }
                 }
                 _context.Entradas.Add(entradas);
             }
-            else
+            /*else
             {
                 var entradaAnterior = _context.Entradas.Include(e => e.entradasDetalle).AsNoTracking()
                 .FirstOrDefault(e => e.EntradaId == entradas.EntradaId);
@@ -88,7 +116,8 @@ namespace Parcial2_Robert.Server.Controllers
                             if(producto != null)
                             {
                                 producto.Existencia +=  productoConsumido.CantidadUtilizada;
-                                _context.Entry(producto).State = EntityState.Modified;
+                                _context.Productos.Update(producto);
+                                _context.Entry(producto).State = EntityState.Detached;
                             }   
                         }
                     }
@@ -101,7 +130,8 @@ namespace Parcial2_Robert.Server.Controllers
                     if(producto != null)
                     {
                         producto.Existencia -= entradaAnterior.CantidadProducida;
-                        _context.Entry(producto).State = EntityState.Modified;
+                        _context.Productos.Update(producto);
+                        _context.Entry(producto).State = EntityState.Detached;
                     }
                 }
 
@@ -114,7 +144,8 @@ namespace Parcial2_Robert.Server.Controllers
                     if(producto != null)
                     {
                         producto.Existencia -= productoConsumido.CantidadUtilizada;
-                        _context.Entry(producto).State = EntityState.Modified;
+                        _context.Productos.Update(producto);
+                        _context.Entry(producto).State = EntityState.Detached;
                         _context.Entry(productoConsumido).State = EntityState.Added;
                     }
                 }
@@ -124,10 +155,11 @@ namespace Parcial2_Robert.Server.Controllers
                 if(producto != null)
                 {
                     producto.Existencia += entradas.CantidadProducida;
-                    _context.Entry(producto).State = EntityState.Modified;
+                    _context.Productos.Update(producto);
+                    _context.Entry(producto).State = EntityState.Detached;
                 }
                 _context.Entradas.Update(entradas);
-            }
+            }*/
 
             await _context.SaveChangesAsync();
             _context.Entry(entradas).State = EntityState.Detached;

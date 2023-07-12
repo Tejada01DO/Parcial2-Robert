@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Parcial2Robert.Server.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230711150948_Inicial")]
+    [Migration("20230712052901_Inicial")]
     partial class Inicial
     {
         /// <inheritdoc />
@@ -29,13 +29,11 @@ namespace Parcial2Robert.Server.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Concepto")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("TEXT");
-
-                    b.Property<int>("PesoTotal")
-                        .HasColumnType("INTEGER");
 
                     b.Property<int>("ProductoId")
                         .HasColumnType("INTEGER");
@@ -54,13 +52,7 @@ namespace Parcial2Robert.Server.Migrations
                     b.Property<int>("CantidadUtilizada")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Descripcion")
-                        .HasColumnType("TEXT");
-
                     b.Property<int>("EntradaId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("EntradasEntradaId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("ProductoId")
@@ -68,7 +60,7 @@ namespace Parcial2Robert.Server.Migrations
 
                     b.HasKey("DetalleId");
 
-                    b.HasIndex("EntradasEntradaId");
+                    b.HasIndex("EntradaId");
 
                     b.ToTable("EntradasDetalle");
                 });
@@ -80,6 +72,7 @@ namespace Parcial2Robert.Server.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Descripcion")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Existencia")
@@ -158,7 +151,9 @@ namespace Parcial2Robert.Server.Migrations
                 {
                     b.HasOne("Entradas", null)
                         .WithMany("entradasDetalle")
-                        .HasForeignKey("EntradasEntradaId");
+                        .HasForeignKey("EntradaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Entradas", b =>
