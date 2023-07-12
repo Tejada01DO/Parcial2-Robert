@@ -101,7 +101,7 @@
                         </div>
 
                         <div class="col-2">
-                            <input @bind-value="entradas.CantidadProducida" class="form-control" placeholder="Cantidad Producida"/>
+                            <input disabled @bind-value="entradas.CantidadProducida" class="form-control" placeholder="Cantidad Producida"/>
                         </div>
                     </div>
                 </fieldset>
@@ -154,8 +154,16 @@
             
             if(entradaEncontrada != null)
             {
+                int Suma = 0;
                 this.entradas = entradaEncontrada;
                 this.entradas.entradasDetalle = entradaEncontrada.entradasDetalle.ToList();
+                
+                foreach (var item in entradas.entradasDetalle)
+                {
+                    Suma += item.CantidadUtilizada;
+                    Total = Suma;
+                }
+
                 StateHasChanged();
                 notify.ShowNotification(titulo: "Encontrado", mensaje: "La entrada se ha encontrado con exito", NotificationSeverity.Info);
                 return true;
@@ -295,6 +303,7 @@
                     Suma += item.CantidadUtilizada;
                     Total = Suma;
                 }
+                entradas.CantidadProducida = Total * 2;
             }
         }
     }
@@ -304,6 +313,7 @@
         this.entradas.entradasDetalle.Remove(detalle);
 
         Total = this.entradas.entradasDetalle.Sum(t => t.CantidadUtilizada);
+        entradas.CantidadProducida = Total * 2;
     }
 
     public string ObtenerDescripcion(int Id)
