@@ -43,6 +43,9 @@ namespace Parcial2_Robert.Server.Controllers
             }
 
             var entrada = await _context.Entradas.FindAsync(EntradaId);
+            Entradas? entradas = entrada;
+            entradas.entradasDetalle = entrada.entradasDetalle;
+            entradas.entradasDetalle = entrada.entradasDetalle.ToList();
 
             if(entrada == null)
             {
@@ -54,31 +57,9 @@ namespace Parcial2_Robert.Server.Controllers
                 Console.WriteLine($"{item.DetalleId}, {item.EntradaId}, {item.ProductoId}, {item.CantidadUtilizada}");
             }
 
-            return entrada;
+            return entradas;
         }
-
-        /*[HttpPost]
-        public async Task<ActionResult<Entradas>> PostEntradas(Entradas entradas)
-        {
-            Productos? producto = new Productos();
-            
-            foreach(var productoConsumido in entradas.entradasDetalle)
-            {
-                producto = _context.Productos.Find(productoConsumido.ProductoId);
-
-                if(producto != null)
-                {
-                    producto.Existencia -= productoConsumido.CantidadUtilizada;
-                    _context.Productos.Update(producto);
-                }
-            }
-            
-            _context.Entradas.Add(entradas);
-            
-            await _context.SaveChangesAsync();
-            _context.Entry(entradas).State = EntityState.Detached;
-            return Ok(entradas);
-        }*/
+        
         [HttpPost]
         public async Task<ActionResult<Entradas>> PostEntradas(Entradas entradas)
         {
@@ -93,12 +74,13 @@ namespace Parcial2_Robert.Server.Controllers
                     {
                         producto.Existencia -= productoConsumido.CantidadUtilizada;
                         _context.Productos.Update(producto);
+                        await _context.SaveChangesAsync();
                         _context.Entry(producto).State = EntityState.Detached;
                     }
                 }
-                _context.Entradas.Add(entradas);
+                await _context.Entradas.AddAsync(entradas);
             }
-            /*else
+            else
             {
                 var entradaAnterior = _context.Entradas.Include(e => e.entradasDetalle).AsNoTracking()
                 .FirstOrDefault(e => e.EntradaId == entradas.EntradaId);
@@ -159,7 +141,7 @@ namespace Parcial2_Robert.Server.Controllers
                     _context.Entry(producto).State = EntityState.Detached;
                 }
                 _context.Entradas.Update(entradas);
-            }*/
+            }
 
             await _context.SaveChangesAsync();
             _context.Entry(entradas).State = EntityState.Detached;
@@ -208,4 +190,4 @@ namespace Parcial2_Robert.Server.Controllers
             return NoContent();
         } 
     }
-}
+}   

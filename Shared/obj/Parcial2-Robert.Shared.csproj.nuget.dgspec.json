@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Parcial2-Robert\\Parcial2-Robert\\Shared\\Parcial2-Robert.Shared.csproj": {}
+    "C:\\Programacion Aplicada I\\Parcial2-Robert\\Shared\\Parcial2-Robert.Shared.csproj": {}
   },
   "projects": {
-    "C:\\Parcial2-Robert\\Parcial2-Robert\\Shared\\Parcial2-Robert.Shared.csproj": {
+    "C:\\Programacion Aplicada I\\Parcial2-Robert\\Shared\\Parcial2-Robert.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Parcial2-Robert\\Parcial2-Robert\\Shared\\Parcial2-Robert.Shared.csproj",
+        "projectUniqueName": "C:\\Programacion Aplicada I\\Parcial2-Robert\\Shared\\Parcial2-Robert.Shared.csproj",
         "projectName": "Parcial2-Robert.Shared",
-        "projectPath": "C:\\Parcial2-Robert\\Parcial2-Robert\\Shared\\Parcial2-Robert.Shared.csproj",
+        "projectPath": "C:\\Programacion Aplicada I\\Parcial2-Robert\\Shared\\Parcial2-Robert.Shared.csproj",
         "packagesPath": "C:\\Users\\Robert Tejada\\.nuget\\packages\\",
-        "outputPath": "C:\\Parcial2-Robert\\Parcial2-Robert\\Shared\\obj\\",
+        "outputPath": "C:\\Programacion Aplicada I\\Parcial2-Robert\\Shared\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Robert Tejada\\AppData\\Roaming\\NuGet\\NuGet.Config",

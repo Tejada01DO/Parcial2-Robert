@@ -9,13 +9,13 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Parcial2-Robert.Server
 build_property.RootNamespace = Parcial2-Robert.Server
-build_property.ProjectDir = C:\Parcial2-Robert\Parcial2-Robert\Server\
+build_property.ProjectDir = C:\Programacion Aplicada I\Parcial2-Robert\Server\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Parcial2-Robert\Parcial2-Robert\Server
+build_property.MSBuildProjectDirectory = C:\Programacion Aplicada I\Parcial2-Robert\Server
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Parcial2-Robert/Parcial2-Robert/Server/Pages/Error.cshtml]
+[C:/Programacion Aplicada I/Parcial2-Robert/Server/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

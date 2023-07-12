@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YIcnHIa+VVPDmKOt/x7Otdr09tUI+SGdV5xhqHhXbUXUBWKpkF6R+tRYeufZYebhqjvrnigEjMRrxnjqS1PLfA==",
+  "dgSpecHash": "pzF1vU5GJlEVmlMyGwDk3/IEmGw2DrbUrRaPO3ZegmVGObqyg7wuFk+t3rtPetkAw8C2nyxVeNn0e4ENIvtVFQ==",
   "success": true,
-  "projectFilePath": "C:\\Parcial2-Robert\\Parcial2-Robert\\Shared\\Parcial2-Robert.Shared.csproj",
+  "projectFilePath": "C:\\Programacion Aplicada I\\Parcial2-Robert\\Shared\\Parcial2-Robert.Shared.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Robert Tejada\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Robert Tejada\\.nuget\\packages\\microsoft.data.sqlite.core\\7.0.8\\microsoft.data.sqlite.core.7.0.8.nupkg.sha512",

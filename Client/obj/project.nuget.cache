@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "80h1w5eWi1bk5JnIsbZ3D3hodfM3amIoaqFeyX8LGKOpHWfAOo78cbYtnQ0AGCb02F2yXFFfc6rDtp2epwOgkg==",
+  "dgSpecHash": "vpI+Uylw5fn4ReLNIVWfvhsEmwXXbAkvXDgRzgPS8GleExkIrqZfNDlyeT7ZHTSy3ZHbKobAkMkbLCUB7zQZ9Q==",
   "success": true,
-  "projectFilePath": "C:\\Parcial2-Robert\\Parcial2-Robert\\Client\\Parcial2-Robert.Client.csproj",
+  "projectFilePath": "C:\\Programacion Aplicada I\\Parcial2-Robert\\Client\\Parcial2-Robert.Client.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Robert Tejada\\.nuget\\packages\\libsassbuilder\\2.0.1\\libsassbuilder.2.0.1.nupkg.sha512",
     "C:\\Users\\Robert Tejada\\.nuget\\packages\\microsoft.aspnetcore.authorization\\7.0.5\\microsoft.aspnetcore.authorization.7.0.5.nupkg.sha512",

@@ -67,9 +67,9 @@
                         </thead>
 
                         <tbody>
+
                             @foreach (var item in this.entradas.entradasDetalle)
-                            {
-                                
+                            {    
                                 <tr>
                                     <td>@item.ProductoId</td>
                                     <td>@ObtenerDescripcion(item.ProductoId)</td>
@@ -131,19 +131,11 @@
     
     protected override async Task OnInitializedAsync()
     {
-        try
-        {
-            var productos = await httpClient.GetFromJsonAsync<List<Productos>>("api/Productos");
+        var productos = await httpClient.GetFromJsonAsync<List<Productos>>("api/Productos");
 
-            if (productos is not null)
-            {
-                L_Productos = productos;
-            }
-        }
-        catch (Exception ex)
+        if(productos is not null)
         {
-            // Manejar la excepción o imprimir detalles del error
-            Console.WriteLine(ex.Message);
+            L_Productos = productos;
         }
     }
 
@@ -163,6 +155,7 @@
             if(entradaEncontrada != null)
             {
                 this.entradas = entradaEncontrada;
+                this.entradas.entradasDetalle = entradaEncontrada.entradasDetalle.ToList();
                 StateHasChanged();
                 notify.ShowNotification(titulo: "Encontrado", mensaje: "La entrada se ha encontrado con exito", NotificationSeverity.Info);
                 return true;
@@ -230,6 +223,7 @@
 
     public async Task Guardar()
     {
+        entradas.entradasDetalle = this.entradas.entradasDetalle.ToList();
         using var response = await httpClient.PostAsJsonAsync("api/Entradas", entradas);
 
         if(response.IsSuccessStatusCode)

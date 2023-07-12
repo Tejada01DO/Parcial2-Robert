@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Parcial2-Robert\\Parcial2-Robert\\Server\\Parcial2-Robert.Server.csproj": {}
+    "C:\\Programacion Aplicada I\\Parcial2-Robert\\Server\\Parcial2-Robert.Server.csproj": {}
   },
   "projects": {
-    "C:\\Parcial2-Robert\\Parcial2-Robert\\Client\\Parcial2-Robert.Client.csproj": {
+    "C:\\Programacion Aplicada I\\Parcial2-Robert\\Client\\Parcial2-Robert.Client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Parcial2-Robert\\Parcial2-Robert\\Client\\Parcial2-Robert.Client.csproj",
+        "projectUniqueName": "C:\\Programacion Aplicada I\\Parcial2-Robert\\Client\\Parcial2-Robert.Client.csproj",
         "projectName": "Parcial2-Robert.Client",
-        "projectPath": "C:\\Parcial2-Robert\\Parcial2-Robert\\Client\\Parcial2-Robert.Client.csproj",
+        "projectPath": "C:\\Programacion Aplicada I\\Parcial2-Robert\\Client\\Parcial2-Robert.Client.csproj",
         "packagesPath": "C:\\Users\\Robert Tejada\\.nuget\\packages\\",
-        "outputPath": "C:\\Parcial2-Robert\\Parcial2-Robert\\Client\\obj\\",
+        "outputPath": "C:\\Programacion Aplicada I\\Parcial2-Robert\\Client\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Robert Tejada\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Parcial2-Robert\\Parcial2-Robert\\Shared\\Parcial2-Robert.Shared.csproj": {
-                "projectPath": "C:\\Parcial2-Robert\\Parcial2-Robert\\Shared\\Parcial2-Robert.Shared.csproj"
+              "C:\\Programacion Aplicada I\\Parcial2-Robert\\Shared\\Parcial2-Robert.Shared.csproj": {
+                "projectPath": "C:\\Programacion Aplicada I\\Parcial2-Robert\\Shared\\Parcial2-Robert.Shared.csproj"
               }
             }
           }
@@ -89,14 +89,14 @@
         }
       }
     },
-    "C:\\Parcial2-Robert\\Parcial2-Robert\\Server\\Parcial2-Robert.Server.csproj": {
+    "C:\\Programacion Aplicada I\\Parcial2-Robert\\Server\\Parcial2-Robert.Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Parcial2-Robert\\Parcial2-Robert\\Server\\Parcial2-Robert.Server.csproj",
+        "projectUniqueName": "C:\\Programacion Aplicada I\\Parcial2-Robert\\Server\\Parcial2-Robert.Server.csproj",
         "projectName": "Parcial2-Robert.Server",
-        "projectPath": "C:\\Parcial2-Robert\\Parcial2-Robert\\Server\\Parcial2-Robert.Server.csproj",
+        "projectPath": "C:\\Programacion Aplicada I\\Parcial2-Robert\\Server\\Parcial2-Robert.Server.csproj",
         "packagesPath": "C:\\Users\\Robert Tejada\\.nuget\\packages\\",
-        "outputPath": "C:\\Parcial2-Robert\\Parcial2-Robert\\Server\\obj\\",
+        "outputPath": "C:\\Programacion Aplicada I\\Parcial2-Robert\\Server\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Robert Tejada\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -113,11 +113,11 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Parcial2-Robert\\Parcial2-Robert\\Client\\Parcial2-Robert.Client.csproj": {
-                "projectPath": "C:\\Parcial2-Robert\\Parcial2-Robert\\Client\\Parcial2-Robert.Client.csproj"
+              "C:\\Programacion Aplicada I\\Parcial2-Robert\\Client\\Parcial2-Robert.Client.csproj": {
+                "projectPath": "C:\\Programacion Aplicada I\\Parcial2-Robert\\Client\\Parcial2-Robert.Client.csproj"
               },
-              "C:\\Parcial2-Robert\\Parcial2-Robert\\Shared\\Parcial2-Robert.Shared.csproj": {
-                "projectPath": "C:\\Parcial2-Robert\\Parcial2-Robert\\Shared\\Parcial2-Robert.Shared.csproj"
+              "C:\\Programacion Aplicada I\\Parcial2-Robert\\Shared\\Parcial2-Robert.Shared.csproj": {
+                "projectPath": "C:\\Programacion Aplicada I\\Parcial2-Robert\\Shared\\Parcial2-Robert.Shared.csproj"
               }
             }
           }
@@ -170,14 +170,14 @@
         }
       }
     },
-    "C:\\Parcial2-Robert\\Parcial2-Robert\\Shared\\Parcial2-Robert.Shared.csproj": {
+    "C:\\Programacion Aplicada I\\Parcial2-Robert\\Shared\\Parcial2-Robert.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Parcial2-Robert\\Parcial2-Robert\\Shared\\Parcial2-Robert.Shared.csproj",
+        "projectUniqueName": "C:\\Programacion Aplicada I\\Parcial2-Robert\\Shared\\Parcial2-Robert.Shared.csproj",
         "projectName": "Parcial2-Robert.Shared",
-        "projectPath": "C:\\Parcial2-Robert\\Parcial2-Robert\\Shared\\Parcial2-Robert.Shared.csproj",
+        "projectPath": "C:\\Programacion Aplicada I\\Parcial2-Robert\\Shared\\Parcial2-Robert.Shared.csproj",
         "packagesPath": "C:\\Users\\Robert Tejada\\.nuget\\packages\\",
-        "outputPath": "C:\\Parcial2-Robert\\Parcial2-Robert\\Shared\\obj\\",
+        "outputPath": "C:\\Programacion Aplicada I\\Parcial2-Robert\\Shared\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Robert Tejada\\AppData\\Roaming\\NuGet\\NuGet.Config",
