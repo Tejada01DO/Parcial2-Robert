@@ -50,7 +50,6 @@
         }
     }
 
-
     public async Task Buscar()
     {
         L_Productos = await httpClient.GetFromJsonAsync<List<Productos>>($"api/productos");

@@ -212,14 +212,14 @@
       "netstandard.dll": "sha256-OYYuPT3JUknj4LdYIa58zF7kDB3tCnLzjCSuhEjtKXM=",
       "System.Private.CoreLib.dll": "sha256-EVS7zPxPV\/41g2mzPwdXtwiigWxI\/SeAHme1IgyD6tc=",
       "Parcial2-Robert.Shared.dll": "sha256-BECVvqx88WnDbXIksjRNY6siYqRfXOsM5wfSCu4nPlk=",
-      "Parcial2-Robert.Client.dll": "sha256-HHoX4jGPCNjvJcMSIoden0ZtaMWd6ff6V8OcJYUlgcg="
+      "Parcial2-Robert.Client.dll": "sha256-kWqbTptcJ9oQko5llf9E0SEfkicGokOt1V9W6nr1vAo="
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
       "Parcial2-Robert.Shared.pdb": "sha256-Rs9F7dg6hZpPpm\/NKObZwVRkCpmu41R1JdniEpYrF7w=",
-      "Parcial2-Robert.Client.pdb": "sha256-lQSyDmc93XEOPEGeVY+Y3gPRK\/GZLVMe08hvOO8rWZQ="
+      "Parcial2-Robert.Client.pdb": "sha256-WlLggRW0kjDC3tTkbfwNnIbab01dTkeI1sonCm1NyMU="
     },
     "runtime": {
       "dotnet.7.0.5.bw8obut9ec.js": "sha256-codB25EodaFEP43MDCfMBuKXU4LqurUKnQrpoMIFnPs=",

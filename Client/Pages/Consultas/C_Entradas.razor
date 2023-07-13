@@ -1,0 +1,67 @@
+@page "/ConsultaEntradas"
+@inject HttpClient httpClient
+
+
+<label>ID</label>
+<div class="input-group">
+    <InputNumber @bind-Value="entradas.EntradaId" class="form-control"></InputNumber>
+    <button type="button" class="btn btn-outline-primary oi oi-magnifying-glass" @onclick="Buscar"></button>
+    <button type="button" class="btn btn-outline-primary oi oi-reload" @onclick="Reiniciar"></button>
+</div>
+
+@if (L_Entradas != null)
+{
+    <table class="table table-bordered">
+        <thead>
+            <th>Entrada ID</th>
+            <th>Fecha</th>
+            <th>Concepto</th>
+            <th>Cantidad Producida</th>
+            <th></th>
+        </thead>
+
+        <tbody>
+            @foreach (var item in L_Entradas)
+            {
+                <tr>
+                    <th>@item.EntradaId</th>
+                    <th>@item.Fecha</th>
+                    <th>@item.Concepto</th>
+                    <th>@item.CantidadProducida</th>
+                    <th><a href="RegistroProductos/@item.EntradaId"><span class="oi oi-eye"></span></a></th>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code
+{
+    public int Conteo { get; set; }
+    public Entradas entradas { get; set; } = new Entradas();
+    public List<Entradas> L_Entradas { get; set; } = new List<Entradas>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var entrada = await httpClient.GetFromJsonAsync<List<Entradas>>($"api/Entradas");
+
+        if(entrada is not null)
+        {
+            L_Entradas = entrada;
+        }
+    }
+
+    public async Task Buscar()
+    {
+        L_Entradas = await httpClient.GetFromJsonAsync<List<Entradas>>($"api/Entradas");
+
+        Conteo = L_Entradas != null ? L_Entradas!.Count() : 0;
+        StateHasChanged();
+    }
+
+    public void Reiniciar()
+    {
+        entradas = new Entradas();
+        L_Entradas.Clear();
+    }
+}

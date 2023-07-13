@@ -152,43 +152,37 @@ namespace Parcial2_Robert.Server.Controllers
         [HttpDelete("{EntradaId}")]
         public async Task<IActionResult> EliminarEntrada(int EntradaId)
         {
-            if(_context.Entradas == null)
+            var entrada = await _context.Entradas.Include(e => e.entradasDetalle).FirstOrDefaultAsync(e => e.EntradaId == EntradaId);
+
+            if (entrada == null)
             {
                 return NotFound();
             }
 
-            var entrada = await _context.Entradas.FindAsync(EntradaId);
-
-            if(entrada == null)
+            foreach (var productoConsumido in entrada.entradasDetalle)
             {
-                return NotFound();
-            }
+                var producto = await _context.Productos.FindAsync(productoConsumido.ProductoId);
 
-            Productos? producto = new Productos();
-
-            foreach(var productoConsumido in entrada.entradasDetalle)
-            {
-                producto = _context.Productos.Find(productoConsumido.ProductoId);
-
-                if(producto != null)
+                if (producto != null)
                 {
-                    producto.Existencia -= productoConsumido.CantidadUtilizada;
-                    _context.Entry(producto).State = EntityState.Modified;
+                    producto.Existencia += productoConsumido.CantidadUtilizada;
+                    _context.Productos.Update(producto);
                 }
             }
 
-            producto = _context.Productos.Find(entrada.ProductoId);
+            var productoInicial = await _context.Productos.FindAsync(entrada.ProductoId);
 
-            if(producto != null)
+            if (productoInicial != null)
             {
-                producto.Existencia -= entrada.CantidadProducida;
-                _context.Entry(producto).State = EntityState.Modified; 
+                productoInicial.Existencia += entrada.CantidadProducida;
+                _context.Productos.Update(productoInicial);
             }
-            _context.Database.ExecuteSqlRaw($"Delete from entradasDetalle where EntradaId = {entrada.EntradaId}");
 
             _context.Entradas.Remove(entrada);
             await _context.SaveChangesAsync();
+
             return NoContent();
-        } 
+        }
+        
     }
 }   
